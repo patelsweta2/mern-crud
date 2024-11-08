@@ -19,6 +19,10 @@
   text-align: center;
 }
 
+.navbar-user {
+  margin-right: 10px;
+}
+
 .navbar-button {
   padding: 10px 16px;
   background-color: #31cf7d;
@@ -27,9 +31,24 @@
   border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
-  font-size: medium;
+  font-size: 1em;
+}
+
+.login-button,
+.logout-button {
+  background-color: #007bff;
+}
+
+.add-employee-button {
+  display: flex;
+  align-items: center;
+  background-color: #28a745;
 }
 
 .navbar-button:hover {
   background-color: #1bb766;
+}
+
+.add-employee-button .icon {
+  margin-right: 5px;
 }

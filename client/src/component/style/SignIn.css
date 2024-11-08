@@ -1,0 +1,46 @@
+.login-container {
+  max-width: 400px;
+  margin: 20%;
+  padding: 30px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+label {
+  display: inline;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.login {
+  width: 100%;
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.popup {
+  margin-top: 10px;
+  color: red;
+}
+
+.signin-link {
+  margin-top: 10px;
+}

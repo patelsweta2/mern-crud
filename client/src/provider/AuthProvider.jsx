@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }) => {
       if (data.success) {
         setUser(data.user);
       } else {
-        setError(data.message);
+        setError(data.message || "SignUp failed");
       }
     } catch (error) {
       setError("Something went wrong");

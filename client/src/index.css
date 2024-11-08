@@ -13,3 +13,10 @@ h2,
 h3 {
   color: #333;
 }
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 60px);
+}
