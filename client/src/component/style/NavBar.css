@@ -12,6 +12,13 @@
   z-index: 100;
 }
 
+.after-login {
+  display: flex;
+  align-items: center;
+  /* width: 100%; */
+  gap: 1rem;
+}
+
 .navbar-title {
   flex: 1;
   font-size: 30px;
@@ -20,7 +27,9 @@
 }
 
 .navbar-user {
-  margin-right: 10px;
+  /* margin-right: 10px; */
+  text-align: center;
+  flex: 1;
 }
 
 .navbar-button {

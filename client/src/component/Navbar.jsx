@@ -23,7 +23,7 @@ const Navbar = () => {
     <div className="navbar">
       <div className="navbar-title">Employee List</div>
       {user ? (
-        <>
+        <div className="after-login">
           <button
             className="navbar-button add-employee-button"
             onClick={handleAddEmployeeClick}
@@ -38,7 +38,7 @@ const Navbar = () => {
           >
             Logout
           </button>
-        </>
+        </div>
       ) : (
         <button className="navbar-button" onClick={handleLoginClick}>
           Login

@@ -1,19 +1,25 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "../style/SignIn.css";
 
 const SignIn = () => {
-  const { login, error } = useContext(AuthContext);
+  const { login, error, user } = useContext(AuthContext);
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [popup, setPopup] = useState(null);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [user, navigate]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setPopup(null);
     if (!userName || !password) {
       setPopup("Username and password are required");
       return;
@@ -22,8 +28,9 @@ const SignIn = () => {
     const success = await login(userName, password);
     if (success) {
       navigate("/");
+      setPopup(success);
     } else {
-      setPopup(error || "Login failed");
+      setPopup(error);
     }
   };
   return (

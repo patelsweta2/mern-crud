@@ -1,4 +1,4 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect } from "react";
 
 export const AuthContext = createContext();
 
@@ -8,26 +8,43 @@ export const AuthProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const url = "http://localhost:8000";
 
-  const login = async (email, password) => {
+  //check if user data exists in localstorage
+  useEffect(() => {
+    const savedUser = localStorage.getItem("user");
+    if (savedUser) {
+      setUser(JSON.parse(savedUser));
+    }
+  }, []);
+
+  const login = async (userName, password) => {
     try {
       setLoading(true);
       const response = await fetch(`${url}/api/users/login`, {
         method: "POST",
-        header: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userName, password }),
       });
+
       const data = await response.json();
-      if (data.success) {
+      console.log("login response:", data);
+
+      if (data.message === "Login successful") {
         setUser(data.user);
+        localStorage.setItem("user", JSON.stringify(data.user));
+        return true;
       } else {
-        setError(data.message || "SignUp failed");
+        setError(data.message || "Login failed");
+        return false;
       }
     } catch (error) {
+      console.log("error--", error);
       setError("Something went wrong");
+      return false;
     } finally {
       setLoading(false);
     }
   };
+
   const logout = async () => {
     try {
       setLoading(true);
@@ -36,17 +53,19 @@ export const AuthProvider = ({ children }) => {
         headers: { "content-Type": "application/json" },
       });
       setUser(null);
+      localStorage.removeItem("user");
     } catch (error) {
+      console.log("error--", error);
       setError("Failed to log out");
     } finally {
       setLoading(false);
     }
   };
 
-  const signup = async () => {
+  const signup = async (userDetails) => {
     try {
       setLoading(true);
-      const response = await fetch(`${url}api/users/signup`, {
+      const response = await fetch(`${url}/api/users/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userDetails),
@@ -58,6 +77,7 @@ export const AuthProvider = ({ children }) => {
         setError(data.message);
       }
     } catch (error) {
+      console.log("error :", error);
       setError("Something went wrong");
     } finally {
       setLoading(false);

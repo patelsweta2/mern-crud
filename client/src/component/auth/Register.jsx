@@ -20,7 +20,11 @@ const Register = () => {
   }, [error]);
 
   const handleChange = (e) => {
-    setUserDetails({ ...userDetails, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setUserDetails((prevDetails) => ({
+      ...prevDetails,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = async (e) => {
