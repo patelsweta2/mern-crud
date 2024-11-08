@@ -19,6 +19,17 @@
   gap: 1rem;
 }
 
+.navbar-home-link {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.navbar-home-link:hover {
+  color: #1ca738;
+}
+
 .navbar-title {
   flex: 1;
   font-size: 30px;
@@ -43,9 +54,12 @@
   font-size: 1em;
 }
 
-.login-button,
 .logout-button {
-  background-color: #007bff;
+  background-color: #cc2b13;
+}
+
+.logout-button:hover {
+  background-color: rgb(205, 67, 46);
 }
 
 .add-employee-button {
@@ -54,7 +68,7 @@
   background-color: #28a745;
 }
 
-.navbar-button:hover {
+.login-button:hover {
   background-color: #1bb766;
 }
 
